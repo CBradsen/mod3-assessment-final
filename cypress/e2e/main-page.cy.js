@@ -3,28 +3,30 @@ import mockData from '../fixtures/mockData.json'
 describe('Main page', () => {
   
   beforeEach(() => {
-cy.intercept('http://localhost:3001/api/v1/urls',
-  {fixture: 'mock-data'}).as('mockData');
-  cy.visit('http://localhost:3000/')
+  cy.intercept("Get", 'http://localhost:3001/api/v1/urls', {
+  statusCode: 200,
+  body: mockData}).as('mockData');
+  cy.visit('http://localhost:3000/');
+  });
 
-  })
   it('should render the page tile', () => {
+    cy.get(h1).should('contain', 'URL Shortener')
   })
 
-  it('should render the existing shortened URLs', () => {
+  // it('should render the existing shortened URLs', () => {
+
+  // })
+
+  // it('should render the form with proper inputs', () => {
+  //   // title:
+  //   // urlToShorten:
+  // })
+
+  // it('should allow the user to type into the form and see their words reflected in the input fields', () => {
 
   })
 
-  it('should render the form with proper inputs', () => {
-    // title:
-    // urlToShorten:
-  })
 
-  it('should allow the user to type into the form and see their words reflected in the input fields', () => {
-
-  })
-
-})
 
 
 
