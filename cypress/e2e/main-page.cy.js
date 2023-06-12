@@ -25,7 +25,7 @@ describe('Main page', () => {
 
   it('should allow the user to type into the form and see their words reflected in the input fields', () => {
     cy.get('input[name=title]').type('The Title')
-    cy.get('input[name=title]').type('https://frontend.turing.edu/lessons/module-3/intro-to-cypress-testing.html')
+    cy.get('input[name=long_url]').type('https://frontend.turing.edu/lessons/module-3/intro-to-cypress-testing.html')
   })
 
 });
