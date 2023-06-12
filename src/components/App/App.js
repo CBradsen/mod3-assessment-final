@@ -8,18 +8,17 @@ export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      urls: []
+      urls: [],
+      err: ""
     }
   }
 
   componentDidMount() {
     getUrls('GET')
-    .then(data => {
-       (this.setState( {urls: data.urls} ))
-    })
-    .catch(error => console.log(error))
-  }
-
+      .then((response) => this.setState( {urls: response.urls} ))
+      .catch((error) => this.setState({err: error}))
+    }
+   
   addNewUrl = (newUrl) => {
     this.setState(prevState => ({urls: [...prevState.urls, newUrl]}));
   }
@@ -32,7 +31,6 @@ export class App extends Component {
           <UrlForm addNewUrl={this.addNewUrl} />
         </header>
         <UrlContainer urls={this.state.urls}/>
-       
       </main>
     );
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import './UrlContainer.css';
 
 const UrlContainer = props => {
-  
+
   const urlEls = props.urls.map(url => (
      <div className="url" key={url.id}>
         <h3>{url.title}</h3>
