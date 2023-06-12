@@ -3,3 +3,6 @@ describe('empty spec', () => {
     cy.visit('https://example.cypress.io')
   })
 })
+
+
+// When a user fills out and submits the form, the new shortened URL is rendered

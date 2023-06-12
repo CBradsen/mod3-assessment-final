@@ -17,6 +17,12 @@ describe('Main page', () => {
   
   })
 
+  it('should allow the user to see the Form with the inputs of Title and url to shorten', () => {
+    cy.get('.inputForm').should('be.visible')
+    cy.get("input[placeholder='Title...']").should('be.visible')
+    cy.get("input[placeholder='URL to Shorten...']").should('be.visible')
+  })
+
   it('should allow the user to type into the form and see their words reflected in the input fields', () => {
     cy.get('input[name=title]').type('The Title')
     cy.get('input[name=title]').type('https://frontend.turing.edu/lessons/module-3/intro-to-cypress-testing.html')
