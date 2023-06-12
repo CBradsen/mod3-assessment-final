@@ -1,35 +1,27 @@
-import mockData from '../fixtures/mockData.json'
-
 describe('Main page', () => {
   
   beforeEach(() => {
   cy.intercept("Get", 'http://localhost:3001/api/v1/urls', {
   statusCode: 200,
-  body: mockData}).as('mockData');
+  fixture: 'mockData.json'}).as('mockData');
   cy.visit('http://localhost:3000/');
   });
 
   it('should render the page tile', () => {
-    cy.get(h1).should('contain', 'URL Shortener')
+    cy.get('h1').should('contain', 'URL Shortener')
   })
 
-  // it('should render the existing shortened URLs', () => {
-
-  // })
-
-  // it('should render the form with proper inputs', () => {
-  //   // title:
-  //   // urlToShorten:
-  // })
-
-  // it('should allow the user to type into the form and see their words reflected in the input fields', () => {
-
+  it('should render the existing shortened URLs', () => {
+    cy.get('.url').should('contain', "http://localhost:3001/useshorturl/1")
+    cy.get('.url').should('contain', "http://localhost:3001/useshorturl/4")
+  
   })
 
+  it('should allow the user to type into the form and see their words reflected in the input fields', () => {
+    cy.get('input[name=title]').type('The Title')
+    cy.get('input[name=title]').type('https://frontend.turing.edu/lessons/module-3/intro-to-cypress-testing.html')
+  })
+
+});
 
 
-
-
-// When a user visits the page, they can view the page title and the existing shortened URLs
-// When a user visits the page, they can view the Form with the proper inputs
-// When a user fills out the form, the information is reflected in the input fields
